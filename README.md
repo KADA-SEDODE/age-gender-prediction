@@ -13,3 +13,13 @@ The model leverages **transfer learning** and **multitask learning** techniques 
 
 ## 🗂️ Project Structure
 
+
+---
+
+## 🧪 Models & Techniques
+
+- ✅ **CNN Backbone**: MobileNetV3 / ResNet18 (pretrained on ImageNet)
+- 🔄 **Transfer Learning**: Fine-tuned on facial image dataset
+- ⚖️ **Multitask Learning**: One shared encoder, two separate heads (age & gender)
+- 🔒 **Regularization**: Dropout, Data Augmentation
+- 📉 **Loss**: 
