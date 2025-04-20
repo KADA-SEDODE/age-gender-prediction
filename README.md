@@ -23,3 +23,22 @@ The model leverages **transfer learning** and **multitask learning** techniques 
 - ⚖️ **Multitask Learning**: One shared encoder, two separate heads (age & gender)
 - 🔒 **Regularization**: Dropout, Data Augmentation
 - 📉 **Loss**: 
+
+(initially α = β = 0.5)
+
+---
+
+## 📊 Dataset
+
+We plan to use:
+- [UTKFace](https://susanqq.github.io/UTKFace/): Annotated faces with age, gender, ethnicity.
+- [IMDB-WIKI](https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/): Large-scale face dataset with age/gender labels.
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repo:
+```bash
+git clone https://github.com/KADA-SEDODE/age-gender-prediction.git
+cd age-gender-prediction
