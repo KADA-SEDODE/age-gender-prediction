@@ -1,78 +1,84 @@
-# 🧠 Age & Gender Prediction from Facial Images
+# 🧠 Age & Gender Prediction with Deep Learning
 
-This project aims to build a deep learning model capable of:
-- 🧓 Predicting the **age** of a person from a facial image (regression).
-- 🚻 Classifying the **gender** (male/female) from the same image.
+> Deep learning project for age and gender prediction from facial images using **PyTorch**, **Google Colab**, and **InceptionV3**.
+---
 
-The model uses **InceptionV3** as a pretrained backbone, fine-tuned for our dual objective through **multitask learning**.
+## 🧾 Overview
+
+This project leverages a pre-trained **InceptionV3** model to predict **gender** and analyze **age** from face images.  
+We conducted a detailed exploration of hyperparameters such as optimizer, learning rate, dropout rate, and the number of neurons in the dense layers.
+
+> ✅ All the training, evaluation, and visualizations are performed in a **single clean notebook** built with **Google Colab**.
 
 ---
 
-## 🧬 Dataset
+## 📁 Files in this repository
 
-We used the [UTKFace dataset](https://susanqq.github.io/UTKFace/), containing 33,488 images. Each image filename encodes:
-- Age (0–100)
-- Gender (0 = male, 1 = female)
-
-**Example**: `25_0_0_20170116174525125.jpg` ⟶ age 25, male
+- `Projet_Prediction_age_Sexe.ipynb` — Main notebook: training, testing, and visual analysis
+- `README.md` — This file
 
 ---
 
-## 🧪 Techniques Used
+## 🔗 Open in Google Colab
 
-| Component              | Description                                                         |
-|------------------------|---------------------------------------------------------------------|
-| 🧠 Model                | InceptionV3 (ImageNet pretrained)                                   |
-| 🔄 Transfer Learning    | Fine-tuning the final layers                                         |
-| 🔁 Multitask Learning   | Simultaneous regression (age) and classification (gender)           |
-| 🧰 Regularization       | Dropout (0.3), Early Stopping (patience = 3), Data Augmentation     |
-| 📈 Optimizer            | Adam with learning rate = `0.0007`                                  |
-| ⚖️ Loss                 | Combined loss: `0.7 * MSE(age) + BCE(gender)`                       |
+👉 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KADA-SEDODE/age-gender-prediction/blob/main/Projet_Prediction_age_Sexe.ipynb)
 
 ---
 
 ## 📊 Results
 
-| Metric               | Value        |
-|----------------------|--------------|
-| 🧠 F1-score (Gender) | **0.9279**   |
-| 🎯 MAE (Age)         | **4.46**     |
-| 💥 Test Loss         | **0.488**    |
+| Metric         | Test Score     |
+|----------------|----------------|
+| **F1-score**   | **0.92**       |
+| Precision      | 0.88           |
+| Recall         | 0.96           |
 
-**Final Model Configuration:**
-- Fully Connected Layer: 256 neurons
-- Dropout: 0.3
-- Learning Rate: 0.0007
-- Epochs: 15 (early stopped)
+> 🔍 Age regression is being considered for future multitask learning experiments.
 
 ---
 
-## 🧪 Model Training Highlights
+## ⚙️ Model & Training Details
 
-Training is done using PyTorch and follows:
-1. Train loop with early stopping.
-2. Validation at each epoch.
-3. Final evaluation on the test set.
+- **Base model**: InceptionV3 (fine-tuned)
+- **Optimizer**: Adam (best performance)
+- **Learning rate**: 0.001
+- **Dropout rate**: 0.3
+- **Dense layer**: 256 neurons
+- **Early stopping**: patience = 3
 
-Losses are visualized for both training and validation sets to check convergence.
-
----
-
-## ⚙️ Installation
-
-```bash
-git clone https://github.com/KADA-SEDODE/age-gender-prediction.git
-```
-
-
-
-## 👨‍🎓 Authors
-- Marvin KADA-SEDODE
-- Cristian BEREGOI
-(Master MoSEF – Université Paris 1 Panthéon-Sorbonne, 2025)
+Training was done with:
+- Normalized & augmented images
+- Train/Val/Test splits
+- Early stopping to avoid overfitting
 
 ---
 
-## 📜 License
+## 🗂 Dataset
 
-This project is licensed under the MIT License.
+- **Dataset**: [UTKFace](https://susanqq.github.io/UTKFace/)
+- **Size**: 33,488 images
+- **Format**: `age_gender_ethnicity_timestamp.jpg`  
+  → e.g., `25_0_0_201701161745.jpg` → 25-year-old male
+
+---
+
+## 👥 Authors
+
+- Cristian **BEREGOI**  
+- Kokouvi **KADA-SEDODE** *(Marvin)*
+
+🎓 Master MoSEF – Université Paris 1 Panthéon-Sorbonne (2024–2025)  
+Supervisors: *Roman Yurchak* & *Coulibaly Amed*
+
+---
+
+## 📜 Quote
+
+> *"Teaching a machine to recognize a face  
+is teaching it a piece of how we see the world."*
+
+---
+
+## 📌 License
+
+This repository is distributed for educational and research purposes only.
